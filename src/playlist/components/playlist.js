@@ -11,12 +11,6 @@ function Playlist(props) {
   const playlist = props.data.categories[0].playlist;
   return (
     <div className="Playlist">
-      <div>
-        <Play color="red" size={32}/>
-        <Pause color="blue" size={32}/>
-        <Volume color="yellow" size={32}/>
-        <FullScreen color="green" size={32}/>
-      </div>
       {
         playlist.map((item) => (
           <Media

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Playlist from './src/playlist/components/playlist';
+import Category from './src/category/components/category';
 import data from './src/api.json';
 
-ReactDOM.render(<Playlist data={data}/>, document.getElementById('app'));
+ReactDOM.render(<Category data={data}/>, document.getElementById('app'));
