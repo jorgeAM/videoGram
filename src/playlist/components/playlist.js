@@ -8,7 +8,7 @@ import FullScreen from '../../icons/components/fullScreen';
 import './playlist.css';
 
 function Playlist(props) {
-  const playlist = props.data.categories[0].playlist;
+  const playlist = props.data.playlist;
   return (
     <div className="Playlist">
       {
