@@ -16,7 +16,7 @@ module.exports = (env) => {
   return {
 
     entry: {
-      videogram: path.resolve(__dirname, 'index.js'),
+      home: path.resolve(__dirname, 'src/entries/home.js'),
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
