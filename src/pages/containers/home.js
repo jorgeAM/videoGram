@@ -2,18 +2,35 @@ import React, { Component } from 'react';
 import HomeLayout from '../components/home-layout';
 import Categories from '../../categories/components/categories';
 import ModalContainer from '../../widgets/containers/modal';
+import Modal from '../../widgets/components/modal';
 import Related from '../components/related';
 import PropTypes from 'prop-types';
 
 class Home extends Component {
+  state = {
+    modalVisible: true,
+  };
+
+  handleCloseModalClick = () => {
+    console.log('close');
+    this.setState({
+      modalVisible: false,
+    });
+  };
+
   render() {
     return (
       <HomeLayout>
         <Related/>
         <Categories categories={this.props.data.categories}/>
-        <ModalContainer>
-          <h1>Hola soy un modal!</h1>
-        </ModalContainer>
+        {
+          this.state.modalVisible &&
+          <ModalContainer>
+            <Modal handleClick={this.handleCloseModalClick}>
+              <h1>Hola Mundo</h1>
+            </Modal>
+          </ModalContainer>
+        }
       </HomeLayout>
     );
   }
