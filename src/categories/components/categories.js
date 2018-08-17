@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Category from './category';
+import './categories.css';
 
 function Categories(props) {
   return (
-    <div>
+    <div className="Categories">
       {
         props.categories.map((category) => (
           <Category key={category.id} {...category}/>
