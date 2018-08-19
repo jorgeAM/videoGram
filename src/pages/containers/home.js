@@ -11,18 +11,10 @@ class Home extends Component {
     modalVisible: false,
   };
 
-  handleCloseModalClick = () => {
-    console.log('close');
-    this.setState({
-      modalVisible: false,
-    });
-  };
-
-  handleOpenModalClick = () => {
-    console.log('open');
-    this.setState({
-      modalVisible: true,
-    });
+  handleToggleModal = () => {
+    this.setState(prevState => ({
+      modalVisible: !prevState.modalVisible,
+    }));
   };
 
   render() {
@@ -30,13 +22,13 @@ class Home extends Component {
       <HomeLayout>
         <Related/>
         <Categories
-          handleOpenModal={this.handleOpenModalClick}
+          handleOpenModal={this.handleToggleModal}
           categories={this.props.data.categories}
         />
         {
           this.state.modalVisible &&
           <ModalContainer>
-            <Modal handleClick={this.handleCloseModalClick}>
+            <Modal handleClick={this.handleToggleModal}>
               <h1>Hola Mundo</h1>
             </Modal>
           </ModalContainer>
