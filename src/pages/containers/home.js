@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 class Home extends Component {
   state = {
-    modalVisible: true,
+    modalVisible: false,
   };
 
   handleCloseModalClick = () => {
@@ -18,11 +18,21 @@ class Home extends Component {
     });
   };
 
+  handleOpenModalClick = () => {
+    console.log('open');
+    this.setState({
+      modalVisible: true,
+    });
+  };
+
   render() {
     return (
       <HomeLayout>
         <Related/>
-        <Categories categories={this.props.data.categories}/>
+        <Categories
+          handleOpenModal={this.handleOpenModalClick}
+          categories={this.props.data.categories}
+        />
         {
           this.state.modalVisible &&
           <ModalContainer>

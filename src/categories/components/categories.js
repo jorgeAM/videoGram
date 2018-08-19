@@ -8,7 +8,7 @@ function Categories(props) {
     <div className="Categories">
       {
         props.categories.map((category) => (
-          <Category key={category.id} {...category}/>
+          <Category key={category.id} {...category} handleClick={props.handleOpenModal}/>
         )
       )
       }

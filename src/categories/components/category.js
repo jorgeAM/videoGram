@@ -8,7 +8,7 @@ function Category(props) {
     <div className="Category">
       <p className="Category-description">{props.description}</p>
       <h2 className="Category-title">{props.title}</h2>
-      <Playlist playlist={props.playlist}/>
+      <Playlist handleClick={props.handleClick} playlist={props.playlist}/>
     </div>
   );
 }
