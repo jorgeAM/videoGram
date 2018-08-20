@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 class Home extends Component {
   state = {
     modalVisible: false,
+    handleError: false,
   };
 
   handleToggleModal = () => {
@@ -17,7 +18,17 @@ class Home extends Component {
     }));
   };
 
+  componentDidCatch(error, info) {
+    this.setState({
+      handleError: true,
+    });
+  }
+
   render() {
+    if (this.state.handleError) {
+      return (<p>hubo un error Crrano</p>);
+    }
+
     return (
       <HomeLayout>
         <Related/>
