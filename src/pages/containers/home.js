@@ -4,12 +4,12 @@ import Categories from '../../categories/components/categories';
 import ModalContainer from '../../widgets/containers/modal';
 import Modal from '../../widgets/components/modal';
 import Related from '../components/related';
+import HandleError from '../../error/containers/handle-error';
 import PropTypes from 'prop-types';
 
 class Home extends Component {
   state = {
     modalVisible: false,
-    handleError: false,
   };
 
   handleToggleModal = () => {
@@ -18,18 +18,9 @@ class Home extends Component {
     }));
   };
 
-  componentDidCatch(error, info) {
-    this.setState({
-      handleError: true,
-    });
-  }
-
   render() {
-    if (this.state.handleError) {
-      return (<p>hubo un error Crrano</p>);
-    }
-
     return (
+      <HandleError>
       <HomeLayout>
         <Related/>
         <Categories
@@ -44,6 +35,7 @@ class Home extends Component {
           </ModalContainer>
         }
       </HomeLayout>
+      </HandleError>
     );
   }
 }

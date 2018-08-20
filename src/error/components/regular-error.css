@@ -1,0 +1,23 @@
+.RegularError {
+  height: 643px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.RegularError p a {
+  text-decoration: none;
+}
+
+.RegularError p {
+  color: grey;
+  font-size: 50px;
+  text-align: center;
+}
+
+.RegularError-emojis{
+  font-size: 120px !important;
+  margin: 0;
+}
