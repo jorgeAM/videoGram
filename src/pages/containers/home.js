@@ -5,6 +5,7 @@ import ModalContainer from '../../widgets/containers/modal';
 import Modal from '../../widgets/components/modal';
 import Related from '../components/related';
 import HandleError from '../../error/containers/handle-error';
+import VideoPlayer from '../../player/containers/video-player';
 import PropTypes from 'prop-types';
 
 class Home extends Component {
@@ -30,7 +31,7 @@ class Home extends Component {
           this.state.modalVisible &&
           <ModalContainer>
             <Modal handleCloseModal={this.handleToggleModal}>
-              <h1>Hola Mundo</h1>
+              <VideoPlayer/>
             </Modal>
           </ModalContainer>
         }
