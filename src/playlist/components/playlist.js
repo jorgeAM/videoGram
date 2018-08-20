@@ -15,6 +15,7 @@ function Playlist(props) {
           <Media
             key={item.id}
             {...item}
+            handleClick={props.handleClick}
           />
         )
       )
@@ -25,6 +26,7 @@ function Playlist(props) {
 
 Playlist.propTypes = {
   playlist: PropTypes.array.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default Playlist;

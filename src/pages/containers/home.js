@@ -8,25 +8,26 @@ import PropTypes from 'prop-types';
 
 class Home extends Component {
   state = {
-    modalVisible: true,
+    modalVisible: false,
   };
 
-  handleCloseModalClick = () => {
-    console.log('close');
-    this.setState({
-      modalVisible: false,
-    });
+  handleToggleModal = () => {
+    this.setState(prevState => ({
+      modalVisible: !prevState.modalVisible,
+    }));
   };
 
   render() {
     return (
       <HomeLayout>
         <Related/>
-        <Categories categories={this.props.data.categories}/>
+        <Categories
+          handleOpenModal={this.handleToggleModal}
+          categories={this.props.data.categories}/>
         {
           this.state.modalVisible &&
           <ModalContainer>
-            <Modal handleClick={this.handleCloseModalClick}>
+            <Modal handleCloseModal={this.handleToggleModal}>
               <h1>Hola Mundo</h1>
             </Modal>
           </ModalContainer>

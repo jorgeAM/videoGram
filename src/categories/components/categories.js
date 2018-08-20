@@ -8,7 +8,7 @@ function Categories(props) {
     <div className="Categories">
       {
         props.categories.map((category) => (
-          <Category key={category.id} {...category}/>
+          <Category key={category.id} {...category} handleClick={props.handleOpenModal}/>
         )
       )
       }
@@ -18,6 +18,7 @@ function Categories(props) {
 
 Categories.propTypes = {
   categories: PropTypes.array.isRequired,
+  handleOpenModal: PropTypes.func.isRequired,
 };
 
 export default Categories;

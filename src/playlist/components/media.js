@@ -7,17 +7,12 @@ class Media extends PureComponent {
     author: this.props.author,
     title: this.props.title,
     cover: this.props.cover,
-  };
-
-  handleClick = () => {
-    this.setState({
-      author: 'Leonidas Esteban',
-    });
+    handleClick: this.props.handleClick,
   };
 
   render() {
     return (
-      <div className="Media" onClick={this.handleClick}>
+      <div className="Media" onClick={this.state.handleClick}>
         <div className="Media-cover">
           <img
             src={this.state.cover}
@@ -35,6 +30,7 @@ Media.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['audio', 'video']),
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default Media;
