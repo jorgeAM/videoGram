@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import Search from '../components/search';
 
 class SearchContainer extends Component {
+  setInputRef = React.createRef();
+
+  handleSubmit = ev => {
+    ev.preventDefault();
+    console.log('valor: ', this.setInputRef.current.value);
+  };
+
   render() {
     return (
-      <Search/>
+      <Search setRef={this.setInputRef} handleSubmit={this.handleSubmit}/>
     );
   }
 }
