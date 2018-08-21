@@ -4,6 +4,7 @@ import VideoPlayerLayout from '../components/video-player-layout';
 import Title from '../components/title';
 import Video from '../components/video';
 import PlayPause from '../components/play-pause';
+import VideoPlayerControls from '../components/video-player-controls';
 import Timer from '../components/timer';
 
 class VideoPlayer extends Component {
@@ -32,8 +33,10 @@ class VideoPlayer extends Component {
     return (
       <VideoPlayerLayout>
         <Title title="Hola Crrano"/>
-        <PlayPause pause={this.state.pause} handleClick={this.togglePlay}/>
-        <Timer duration={this.state.duration}/>
+        <VideoPlayerControls>
+          <PlayPause pause={this.state.pause} handleClick={this.togglePlay}/>
+          <Timer duration={this.state.duration}/>          
+        </VideoPlayerControls>
         <Video
           handleLoadedMetaData={this.handleLoadedMetaData}
           setRef={this.setVideoRef}
