@@ -4,6 +4,7 @@ import './video.css';
 
 class Video extends Component {
   render() {
+    const { handleLoadedMetaData } = this.props;
     return (
       <div className="Video">
         <video
@@ -11,6 +12,7 @@ class Video extends Component {
           controls
           autoPlay={this.props.autoplay}
           src={this.props.src}
+          onLoadedMetadata={handleLoadedMetaData}
         />
       </div>
     );
