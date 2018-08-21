@@ -10,10 +10,15 @@ class VideoPlayer extends Component {
     pause: false,
   };
 
+  setVideoRef = React.createRef();
+
   togglePlay = () => {
     this.setState(prevState => ({
       pause: !prevState.pause,
     }));
+
+    this.state.pause ? this.setVideoRef.current.pause() : this.setVideoRef.current.play();
+    console.log(this.setVideoRef.current.duration);
   };
 
   render() {
@@ -22,6 +27,7 @@ class VideoPlayer extends Component {
         <Title title="Hola Crrano"/>
         <PlayPause pause={this.state.pause} handleClick={this.togglePlay}/>
         <Video
+          setRef={this.setVideoRef}
           autoplay={false}
           src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
         />
@@ -29,9 +35,5 @@ class VideoPlayer extends Component {
     );
   }
 }
-
-VideoPlayer.propTypes = {
-  pause: PropTypes.bool.isRequired,
-};
 
 export default VideoPlayer;

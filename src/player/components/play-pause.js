@@ -21,6 +21,7 @@ const PlayPause = (props) => (
 
 PlayPause.propTypes = {
   handleClick: PropTypes.func.isRequired,
+  pause: PropTypes.bool.isRequired,
 };
 
 export default PlayPause;
