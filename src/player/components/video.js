@@ -4,14 +4,17 @@ import './video.css';
 
 class Video extends Component {
   render() {
-    const { handleLoadedMetaData } = this.props;
+    const { handleLoadedMetaData, handleTimeUpdate } = this.props;
     return (
       <div className="Video">
         <video
           ref={this.props.setRef}
           autoPlay={this.props.autoplay}
           src={this.props.src}
+          /*Duración del video*/
           onLoadedMetadata={handleLoadedMetaData}
+          /*Tiempo transcurrido*/
+          onTimeUpdate={handleTimeUpdate}
         />
       </div>
     );

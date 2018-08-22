@@ -11,6 +11,7 @@ class VideoPlayer extends Component {
   state = {
     pause: false,
     duration: 0,
+    currentTime: 0,
   };
 
   setVideoRef = React.createRef();
@@ -29,16 +30,23 @@ class VideoPlayer extends Component {
     });
   };
 
+  handleTimeUpdate = () => {
+    this.setState({
+      currentTime: this.setVideoRef.current.currentTime,
+    });
+  };
+
   render() {
     return (
       <VideoPlayerLayout>
         <Title title="Hola Crrano"/>
         <VideoPlayerControls>
           <PlayPause pause={this.state.pause} handleClick={this.togglePlay}/>
-          <Timer duration={this.state.duration}/>          
+          <Timer currentTime={this.state.currentTime} duration={this.state.duration}/>
         </VideoPlayerControls>
         <Video
           handleLoadedMetaData={this.handleLoadedMetaData}
+          handleTimeUpdate={this.handleTimeUpdate}
           setRef={this.setVideoRef}
           autoplay={false}
           src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
