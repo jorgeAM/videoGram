@@ -14,6 +14,7 @@ class VideoPlayer extends Component {
     pause: false,
     duration: 0,
     currentTime: 0,
+    loading: false,
   };
 
   setVideoRef = React.createRef();
@@ -42,6 +43,18 @@ class VideoPlayer extends Component {
     this.setVideoRef.current.currentTime = ev.target.value;
   };
 
+  handleSeeking = () => {
+    this.setState({
+      loading: true,
+    });
+  };
+
+  handleSeeked = () => {
+    this.setState({
+      loading: false,
+    });
+  };
+
   render() {
     return (
       <VideoPlayerLayout>
@@ -55,10 +68,15 @@ class VideoPlayer extends Component {
             handleProgressChange={this.handleProgressChange}
           />
         </VideoPlayerControls>
-        <Spinner/>
+        {
+          this.state.loading &&
+          <Spinner/>
+        }
         <Video
           handleLoadedMetaData={this.handleLoadedMetaData}
           handleTimeUpdate={this.handleTimeUpdate}
+          handleSeeking={this.handleSeeking}
+          handleSeeked={this.handleSeeked}
           setRef={this.setVideoRef}
           autoplay={false}
           src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"

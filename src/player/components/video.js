@@ -4,7 +4,12 @@ import './video.css';
 
 class Video extends Component {
   render() {
-    const { handleLoadedMetaData, handleTimeUpdate } = this.props;
+    const {
+      handleLoadedMetaData,
+      handleTimeUpdate,
+      handleSeeking,
+      handleSeeked,
+    } = this.props;
     return (
       <div className="Video">
         <video
@@ -15,6 +20,10 @@ class Video extends Component {
           onLoadedMetadata={handleLoadedMetaData}
           /*Tiempo transcurrido*/
           onTimeUpdate={handleTimeUpdate}
+          /*cargando*/
+          onSeeking={handleSeeking}
+          /*cargo*/
+          onSeeked={handleSeeked}
         />
       </div>
     );
