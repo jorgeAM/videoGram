@@ -9,6 +9,7 @@ import Timer from '../components/timer';
 import ProgressBar from '../components/progress-bar';
 import Spinner from '../components/spinner';
 import Volume from '../components/volume';
+import FullScreen from '../components/full-screen';
 
 class VideoPlayer extends Component {
   state = {
@@ -19,6 +20,7 @@ class VideoPlayer extends Component {
   };
 
   setVideoRef = React.createRef();
+  setVideoContainerRef = React.createRef();
 
   togglePlay = () => {
     this.setState(prevState => ({
@@ -61,9 +63,17 @@ class VideoPlayer extends Component {
     this.setVideoRef.current.volume = ev.target.value;
   };
 
+  handleFullScreenClick = () => {
+    const video = this.setVideoContainerRef.current;
+    if (video.requestFullscreen) video.requestFullscreen();
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+    else if (video.mozRequestFullScreen) video.mozRequestFullScreen();
+    else if (video.msRequestFullscreen) video.msRequestFullscreen();
+  };
+
   render() {
     return (
-      <VideoPlayerLayout>
+      <VideoPlayerLayout setRef={this.setVideoContainerRef}>
         <Title title={this.props.title}/>
         <VideoPlayerControls>
           <PlayPause pause={this.state.pause} handleClick={this.togglePlay}/>
@@ -74,6 +84,7 @@ class VideoPlayer extends Component {
             handleProgressChange={this.handleProgressChange}
           />
           <Volume handleVolumeChange={this.handleVolumeChange}/>
+          <FullScreen handleFullScreenClick={this.handleFullScreenClick}/>
         </VideoPlayerControls>
         {
           this.state.loading &&
