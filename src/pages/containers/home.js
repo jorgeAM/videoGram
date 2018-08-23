@@ -11,11 +11,13 @@ import PropTypes from 'prop-types';
 class Home extends Component {
   state = {
     modalVisible: false,
+    media: null,
   };
 
-  handleToggleModal = () => {
+  handleToggleModal = (media) => {
     this.setState(prevState => ({
       modalVisible: !prevState.modalVisible,
+      media: media,
     }));
   };
 
@@ -31,7 +33,7 @@ class Home extends Component {
           this.state.modalVisible &&
           <ModalContainer>
             <Modal handleCloseModal={this.handleToggleModal}>
-              <VideoPlayer/>
+              <VideoPlayer src={this.state.media.src} title={this.state.media.title}/>
             </Modal>
           </ModalContainer>
         }

@@ -7,12 +7,16 @@ class Media extends PureComponent {
     author: this.props.author,
     title: this.props.title,
     cover: this.props.cover,
-    handleClick: this.props.handleClick,
+    openModal: this.props.openModal,
+  };
+
+  handleClick = () => {
+    this.state.openModal(this.props);
   };
 
   render() {
     return (
-      <div className="Media" onClick={this.state.handleClick}>
+      <div className="Media" onClick={this.handleClick}>
         <div className="Media-cover">
           <img
             src={this.state.cover}
@@ -30,7 +34,7 @@ Media.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['audio', 'video']),
-  handleClick: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 export default Media;
