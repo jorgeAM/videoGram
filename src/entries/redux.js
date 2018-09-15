@@ -39,11 +39,22 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
-const playlist = document.getElementById('playlist');
-const songs = store.getState();
+function render() {
+  const playlist = document.getElementById('playlist');
+  const songs = store.getState();
+  playlist.innerHTML = '';
 
-songs.forEach((song) => {
-  const template = document.createElement('p');
-  template.textContent = song.title;
-  playlist.append(template);
-});
+  songs.forEach((song) => {
+    const template = document.createElement('p');
+    template.textContent = song.title;
+    playlist.append(template);
+  });
+}
+
+render();
+
+const handleChange = () => {
+  render();
+};
+
+store.subscribe(handleChange);
