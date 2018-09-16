@@ -6,7 +6,7 @@ class SearchContainer extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-    console.log('valor: ', this.setInputRef.current.value);
+    console.log(this.setInputRef.current.value);
   };
 
   render() {
