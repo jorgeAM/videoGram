@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import Search from '../components/search';
+import { connect } from 'react-redux';
 
 class SearchContainer extends Component {
   setInputRef = React.createRef();
 
   handleSubmit = ev => {
     ev.preventDefault();
-    console.log(this.setInputRef.current.value);
+    console.log();
+    /*DISPARAMOS EVENTO*/
+    this.props.dispatch({
+      type: 'SEARCH_VIDEO',
+      payload: {
+        query: this.setInputRef.current.value,
+      },
+    });
   };
 
   render() {
@@ -16,4 +24,5 @@ class SearchContainer extends Component {
   }
 }
 
-export default SearchContainer;
+/*CONECTAMOS A STORE*/
+export default connect()(SearchContainer);
