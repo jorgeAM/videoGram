@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './media.css';
+/*REACT-ROUTER*/
+import { Link } from 'react-router-dom';
 
 class Media extends PureComponent {
   state = {
@@ -16,15 +18,20 @@ class Media extends PureComponent {
 
   render() {
     return (
-      <div className="Media" onClick={this.handleClick}>
-        <div className="Media-cover">
-          <img
-            src={this.state.cover}
-            alt="Cover" width={260} height={160} className="Media-image"/>
-          <h3 className="Media-title">{this.state.title}</h3>
-          <p className="Media-author">{this.state.author}</p>
+      <Link to={{
+        pathname: '/videos',
+        search: `?id=${this.props.id}`,
+      }}>
+        <div className="Media" onClick={this.handleClick}>
+          <div className="Media-cover">
+            <img
+              src={this.state.cover}
+              alt="Cover" width={260} height={160} className="Media-image"/>
+            <h3 className="Media-title">{this.state.title}</h3>
+            <p className="Media-author">{this.state.author}</p>
+          </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }
